@@ -22,6 +22,14 @@ var replacements = [{
         }
     }
 },{
+    //fluid oz to ml
+    pattern: /(\d+\.?\d*) ?oz?/ig,
+    func: function(match, oz, offset, str){
+        var volume = Math.round(100 * (parseFloat(oz) * 29.5735)) / 100;
+        
+        return match + ' (' + volume + "ml)";
+    }
+},{
     pattern: /(\d+\.?\d*) ?pounds?/ig,
     func: function(match, lbs, offset, str){
         var weight = Math.round(100 * (parseFloat(lbs) * 0.453592)) / 100;
